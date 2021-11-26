@@ -736,7 +736,9 @@ function isEnumerationItem(value: any): boolean {
     return (
         value instanceof Object &&
         Object.prototype.hasOwnProperty.call(value, "value") &&
-        Object.prototype.hasOwnProperty.call(value, "key")
+        Object.prototype.hasOwnProperty.call(value, "key") && 
+        // workaround to stop incorrect identification of enum objects
+        Object.prototype.hasOwnProperty.call(value, "enum")
     );
 }
 
